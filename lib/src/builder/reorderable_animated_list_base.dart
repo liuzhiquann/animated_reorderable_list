@@ -243,16 +243,10 @@ abstract class ReorderableAnimatedListBaseState<
     final swappedPairs = [];
 
     if (oldList.length == newList.length && widget.enableSwap) {
-      for (int i = 0; i < newList.length; i++) {
+      for (int i = 0; i < oldList.length; i++) {
         if (!isSameItem(oldList[i], newList[i])) {
-          final oldIndex =
-              oldList.indexWhere((oldItem) => isSameItem(oldItem, newList[i]));
-
-          if (oldIndex != -1) {
-            if (isSameItem(newList[oldIndex], oldList[i])) {
-              swappedPairs.add([i, oldIndex]);
-            }
-          }
+          final newIndex = newList.indexWhere((newItem) => isSameItem(newItem, oldList[i]));
+          swappedPairs.add([i, newIndex]);
         }
       }
       if (swappedPairs.isEmpty) {

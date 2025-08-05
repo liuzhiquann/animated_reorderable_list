@@ -655,8 +655,6 @@ class ReorderableAnimatedBuilderState extends State<ReorderableAnimatedBuilder>
     final toOffset = _itemOffsetAt(toIndex);
     childrenMap[toIndex] = childrenMap[fromIndex]!.copyWith(
         startOffset: fromOffset, endOffset: toOffset, animate: !_isDragging);
-    childrenMap[fromIndex] = childrenMap[toIndex]!.copyWith(
-        startOffset: toOffset, endOffset: fromOffset, animate: !_isDragging);
   }
 
   void _onItemRemoved(int itemIndex, Duration removeDuration) {
